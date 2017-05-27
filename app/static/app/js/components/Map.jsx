@@ -57,12 +57,11 @@ class Map extends React.Component {
 
     if (showBackground) {
       this.basemaps = {
-        "Google Maps Hybrid": L.tileLayer('//{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
-            attribution: 'Map data: &copy; Google Maps',
-            subdomains: ['mt0','mt1','mt2','mt3'],
+        "Google Maps Hybrid": L.tileLayer('//api.aeromap.cn/map/GoogleChinaHybridMap/{z}/{y}/{x}?X-API-KEY=f73a670d-20a2-329c-9c18-4b88c6eba8c7', {
+            attribution: 'Map data: &copy; Areomap',
             maxZoom: 21,
             minZoom: 0,
-            label: 'Google Maps Hybrid'
+            label: 'Aeromap Hybrid'
         }).addTo(this.map),
         "ESRI Satellite": L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',

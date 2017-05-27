@@ -20,7 +20,7 @@ usage(){
   echo "Usage: $0 <command> [options]"
   echo
   echo "This program helps to manage the setup/teardown of the docker containers for running WebODM. We recommend that you read the full documentation of docker at https://docs.docker.com if you want to customize your setup."
-  echo 
+  echo
   echo "Command list:"
   echo "	start		Start WebODM"
   echo "	stop		Stop WebODM"
@@ -35,16 +35,16 @@ check_command(){
 	check_msg_prefix="Checking for $1... "
 	check_msg_result="\033[92m\033[1m OK\033[0m\033[39m"
 
-	hash $1 2>/dev/null || not_found=true 
+	hash $1 2>/dev/null || not_found=true
 	if [[ $not_found ]]; then
-		
+
 		# Can we attempt to install it?
 		if [[ ! -z "$3" ]]; then
 			echo -e "$check_msg_prefix \033[93mnot found, we'll attempt to install\033[39m"
 			run "$3 || sudo $3"
 
 			# Recurse, but don't pass the install command
-			check_command "$1" "$2"	
+			check_command "$1" "$2"
 		else
 			check_msg_result="\033[91m can't find $1! Check that the program is installed and that you have added the proper path to the program to your PATH environment variable before launching WebODM. If you change your PATH environment variable, remember to close and reopen your terminal. $2\033[39m"
 		fi
@@ -97,7 +97,7 @@ elif [[ $1 = "rebuild" ]]; then
 elif [[ $1 = "update" ]]; then
 	echo "Updating WebODM..."
 	run "git pull origin master"
-	run "docker pull opendronemap/node-opendronemap"
+	run "docker pull hobo0cn/node-opendronemap"
 	rebuild
 elif [[ $1 = "checkenv" ]]; then
 	environment_check
